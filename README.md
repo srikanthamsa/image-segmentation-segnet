@@ -1,83 +1,6 @@
 # Image Segmentation Keras : Implementation of Segnet, FCN, UNet, PSPNet and other models in Keras.
 
 
-Implementation of various Deep Image Segmentation models in keras.
-
-
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/sunshineatnoon/Paper-Collection/master/images/FCN1.png" width="50%" >
-</p>
-
-Link to the full blog post with tutorial : https://divamgupta.com/image-segmentation/2019/06/06/deep-learning-semantic-segmentation-keras.html
-
-
-## Working Google Colab Examples:
-* Python Interface: https://colab.research.google.com/drive/1q_eCYEzKxixpCKH1YDsLnsvgxl92ORcv?usp=sharing
-* CLI Interface: https://colab.research.google.com/drive/1Kpy4QGFZ2ZHm69mPfkmLSUes8kj6Bjyi?usp=sharing
-
-## Training using GUI interface
-You can also train segmentation models on your computer with https://liner.ai  
-
-Train   |  Inference / Export
-:-------------------------:|:-------------------------:
-![https://liner.ai ](sample_images/liner_dataset.png)  |  ![https://liner.ai ](sample_images/liner_testing.png)
-![https://liner.ai ](sample_images/liner_training.png)  |  ![https://liner.ai ](sample_images/liner_export.png)
-
-
-## Models
-
-Following models are supported:
-
-| model_name       | Base Model        | Segmentation Model |
-|------------------|-------------------|--------------------|
-| fcn_8            | Vanilla CNN       | FCN8               |
-| fcn_32           | Vanilla CNN       | FCN8               |
-| fcn_8_vgg        | VGG 16            | FCN8               |
-| fcn_32_vgg       | VGG 16            | FCN32              |
-| fcn_8_resnet50   | Resnet-50         | FCN32              |
-| fcn_32_resnet50  | Resnet-50         | FCN32              |
-| fcn_8_mobilenet  | MobileNet         | FCN32              |
-| fcn_32_mobilenet | MobileNet         | FCN32              |
-| pspnet           | Vanilla CNN       | PSPNet             |
-| pspnet_50        | Vanilla CNN       | PSPNet             |
-| pspnet_101       | Vanilla CNN       | PSPNet             |
-| vgg_pspnet       | VGG 16            | PSPNet             |
-| resnet50_pspnet  | Resnet-50         | PSPNet             |
-| unet_mini        | Vanilla Mini CNN  | U-Net              |
-| unet             | Vanilla CNN       | U-Net              |
-| vgg_unet         | VGG 16            | U-Net              |
-| resnet50_unet    | Resnet-50         | U-Net              |
-| mobilenet_unet   | MobileNet         | U-Net              |
-| segnet           | Vanilla CNN       | Segnet             |
-| vgg_segnet       | VGG 16            | Segnet             |
-| resnet50_segnet  | Resnet-50         | Segnet             |
-| mobilenet_segnet | MobileNet         | Segnet             |
-
-
-Example results for the pre-trained models provided :
-
-Input Image            |  Output Segmentation Image
-:-------------------------:|:-------------------------:
-![](sample_images/1_input.jpg)  |  ![](sample_images/1_output.png)
-![](sample_images/3_input.jpg)  |  ![](sample_images/3_output.png)
-
-
-## How to cite
-
-If you are using this library, please cite using:
-
-```
-@article{gupta2023image,
-  title={Image segmentation keras: Implementation of segnet, fcn, unet, pspnet and other models in keras},
-  author={Gupta, Divam},
-  journal={arXiv preprint arXiv:2307.13215},
-  year={2023}
-}
-
-```
-
-
 ## Getting Started
 
 ### Prerequisites
@@ -97,41 +20,15 @@ Install the module
 
 Recommended way:
 ```shell
-pip install --upgrade git+https://github.com/divamgupta/image-segmentation-keras
-```
-
-### or 
-
-```shell
-pip install keras-segmentation
+pip install --upgrade git+https://github.com/srikanthamsa/image-segmentation-segnet
 ```
 
 ### or
 
 ```shell
-git clone https://github.com/divamgupta/image-segmentation-keras
-cd image-segmentation-keras
+git clone https://github.com/srikanthamsa/image-segmentation-segnet
+cd image-segmentation-segnet
 python setup.py install
-```
-
-
-## Pre-trained models:
-```python
-from keras_segmentation.pretrained import pspnet_50_ADE_20K , pspnet_101_cityscapes, pspnet_101_voc12
-
-model = pspnet_50_ADE_20K() # load the pretrained model trained on ADE20k dataset
-
-model = pspnet_101_cityscapes() # load the pretrained model trained on Cityscapes dataset
-
-model = pspnet_101_voc12() # load the pretrained model trained on Pascal VOC 2012 dataset
-
-# load any of the 3 pretrained models
-
-out = model.predict_segmentation(
-    inp="input_image.jpg",
-    out_fname="out.png"
-)
-
 ```
 
 
@@ -329,9 +226,6 @@ perform_distilation ( data_path="/path/to/large_image_set/" , checkpoints_path="
     teacher_model=model_large ,  student_model=model_small  , distilation_loss='kl' , feats_distilation_loss='pa' )
 
 ```
-
-
-
 
 
 ## Adding custom augmentation function to training
